@@ -1,0 +1,22 @@
+﻿@using SnapAPDimensionsIFrame.Entity;
+@using SnapAPDimensionsIFrame.Entity.Intacct;
+@using SnapAPDimensionsIFrame.Helpers;
+@model List<Dimension>;
+<script src="~/lib/jquery/dist/jquery.js" type="text/javascript"></script>
+<script src="~/js/dimension.js" type="text/javascript"></script>
+
+@using (Html.BeginForm("Index", "Dimension", FormMethod.Post))
+{
+    @foreach (Dimension dimension in Model)
+    {
+        <div class="" style="padding: 5px;">
+            @Html.Label(dimension.TermLabel)
+            @Html.DropDownListForCustom(dimension)
+        </div>
+    }
+    <div class="">
+        <input type="submit" value="Refresh" id="btnRefresh" />
+        <button type="button" onclick="GetXML()" hidden>Get XML</button>
+        <label id="xmlresult"></label>
+    </div>
+}
